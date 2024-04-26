@@ -1,0 +1,55 @@
+<%- include('base') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Edit Expense</h3>
+            <form action="/update/<%= expenses[0].id %>" method="POST">
+
+                <input type="hidden" class="form-control" name="id" value="<%= expenses[0].ID %>">
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input class="form-control" type="datetime-local" name="date" value="<%= expenses[0].date.toISOString().slice(0, 16) %>" id="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="expensename">Expense name</label>
+                    <input class="form-control" type="text" name="expensename" value="<%= expenses[0].expensename %>" id="expensename">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Expense Amount</label>
+                    <input class="form-control" type="number" min="0" name="amount" value="<%= expenses[0].amount %>" id="amount">
+                </div>
+
+                <div class="form-group">
+                    <label for="paymode">Payment Mode</label>
+                    <select class="form-control" name="paymode" id="paymode">
+                        <option selected hidden><%= expenses[0].paymode %></option>
+                        <option value="cash">cash</option>
+                        <option value="debitcard">debitcard</option>
+                        <option value="creditcard">creditcard</option>
+                        <option value="epayment">epayment</option>
+                        <option value="onlinebanking">onlinebanking</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" name="category" id="category">
+                        <option selected hidden><%= expenses[0].category %></option>
+                        <option value="food">food</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="business">Business</option>
+                        <option value="rent">Rent</option>
+                        <option value="EMI">EMI</option>
+                        <option value="other">other</option>
+                    </select>
+                </div>
+
+                <input class="btn btn-danger" type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+</div>
